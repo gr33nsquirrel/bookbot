@@ -1,15 +1,16 @@
 # Calculate word count
-
 def get_word_count(book):
     return len(book.split())
 
 
 # Create dictionary of character counts 
-
 def get_char_count(book):
     char_count = {}
 
-    for c in book.lower():
+    for c in book.lower():              # why: normalize case
+        if not c.isalpha():             # why: ignore spaces/punctuation
+            continue
+
         if c in char_count:
             char_count[c] += 1
         else:
@@ -19,7 +20,6 @@ def get_char_count(book):
 
 
 # Sort dictionary by number of characters
-
 def sort_on_count(char_count):
     return char_count["num"]
 
